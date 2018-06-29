@@ -7,9 +7,12 @@ import {
 
 import LyricType from "./lyric_type";
 import SongType from "./song_type";
+import Usertype from "./userType";
 
 import { Lyric } from "../../models/lyric";
 import { Song } from "../../models/song";
+
+import { getMe } from "../../services/authentication";
 
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -25,6 +28,12 @@ const RootQuery = new GraphQLObjectType({
             args: { id: { type: new GraphQLNonNull(GraphQLID) } },
             resolve(_parnetValue, { id }) {
                 return Lyric.findById(id);
+            },
+        },
+        getMe: {
+            type: Usertype,
+            resolve(_parnetValue, _args, request) {
+                return getMe(request);
             },
         },
     }),
