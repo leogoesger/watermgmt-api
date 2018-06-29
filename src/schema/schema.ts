@@ -1,6 +1,6 @@
 import { GraphQLSchema } from "graphql";
 
-import RootQueryType from "./types/root_query_type";
+import RootQueryType from "./queries";
 import MutationType from "./mutations";
 
 const schema = new GraphQLSchema({

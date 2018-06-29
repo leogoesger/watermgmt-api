@@ -1,10 +1,10 @@
 import { verify, sign } from "jsonwebtoken";
-import User from "../models/user";
+import User from "../../models/user";
 import { Request } from "express";
 
 export const signUp = (email: string, password: string) => {
     const newUser = new User({ email, password });
-    const jwt = sign({ email }, "some_secret");
+    const jwt = sign({ email }, process.env.JWT_SECRET);
 
     return newUser.save().then(user => {
         user.jwt = jwt;
@@ -29,7 +29,7 @@ const authenticate = (email: string, password: string) => {
 
 export const getMe = (request: Request) => {
     const token = request.header("jwt");
-    const decoded: any = verify(token, "some_secret");
+    const decoded: any = verify(token, process.env.JWT_SECRET);
     return User.findOne({ email: decoded.email });
 };
 

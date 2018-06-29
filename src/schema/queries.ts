@@ -5,14 +5,12 @@ import {
     GraphQLNonNull,
 } from "graphql";
 
-import LyricType from "./lyric_type";
-import SongType from "./song_type";
-import Usertype from "./userType";
+import LyricType from "./types/lyric_type";
+import SongType from "./types/song_type";
 
-import { Lyric } from "../../models/lyric";
-import { Song } from "../../models/song";
-
-import { getMe } from "../../services/authentication";
+import { Lyric } from "../models/lyric";
+import { Song } from "../models/song";
+import userQueries from "./user/userQueries";
 
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -30,12 +28,7 @@ const RootQuery = new GraphQLObjectType({
                 return Lyric.findById(id);
             },
         },
-        getMe: {
-            type: Usertype,
-            resolve(_parnetValue, _args, request) {
-                return getMe(request);
-            },
-        },
+        ...userQueries,
     }),
 });
 

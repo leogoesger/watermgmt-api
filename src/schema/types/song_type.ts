@@ -1,9 +1,4 @@
-import {
-    GraphQLObjectType,
-    GraphQLID,
-    GraphQLInt,
-    GraphQLString,
-} from "graphql";
+import { GraphQLObjectType, GraphQLID, GraphQLInt } from "graphql";
 
 const SongType = new GraphQLObjectType({
     name: "SongType",
