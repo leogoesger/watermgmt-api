@@ -12,12 +12,12 @@ const app = express();
 (mongoose as any).Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || process.env.DB_HOST);
 
+app.use(cors())
 app.use(logger("tiny"));
 app.use(bodyParser.json());
 
 app.use(
     "/api/graphql",
-    cors(),
     expressGraphQL({
         schema,
         graphiql: true,

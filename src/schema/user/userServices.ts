@@ -2,8 +2,8 @@ import { verify, sign } from "jsonwebtoken";
 import User from "../../models/user";
 import { Request } from "express";
 
-export const signUp = (email: string, password: string) => {
-    const newUser = new User({ email, password });
+export const signUp = (email: string, password: string, name: string) => {
+    const newUser = new User({ email, password, name });
     const jwt = sign({ email }, process.env.JWT_SECRET);
 
     return newUser.save().then(user => {
@@ -19,6 +19,7 @@ const authenticate = (email: string, password: string) => {
         }
         const res = await user.comparePassword(password);
 
+        user.jwt = sign({ email }, process.env.JWT_SECRET);
         if (res) {
             return user;
         } else {
