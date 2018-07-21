@@ -1,4 +1,9 @@
-import { GraphQLObjectType, GraphQLList, GraphQLString } from "graphql";
+import {
+    GraphQLObjectType,
+    GraphQLList,
+    GraphQLString,
+    GraphQLFloat,
+} from "graphql";
 
 const ImageType = new GraphQLObjectType({
     name: "ImageType",
@@ -12,8 +17,8 @@ const CCSiteType = new GraphQLObjectType({
     name: "CCSiteType",
     fields: {
         location: { type: GraphQLString },
-        lng: { type: GraphQLString },
-        lat: { type: GraphQLString },
+        lng: { type: GraphQLFloat },
+        lat: { type: GraphQLFloat },
         images: { type: new GraphQLList(ImageType) },
     },
 });

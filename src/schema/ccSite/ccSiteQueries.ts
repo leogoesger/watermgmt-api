@@ -4,7 +4,7 @@ import { getSites } from "./ccSiteServices";
 import CCSiteType from "./ccSiteType";
 
 const ccSiteQueries = {
-    getSites: {
+    geoSites: {
         type: new GraphQLList(CCSiteType),
         resolve() {
             return getSites();
