@@ -5,7 +5,7 @@
     "author": "Leo Q <leoq91@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "tsc": "tsc",
+        "build": "tsc",
         "start": "tsc-watch --onSuccess \"nodemon --watch build build/app.js\"",
         "serve": "node ./build/app.js",
         "seed": "node --require ts-node/register ./src/scripts/seedDB.ts",
