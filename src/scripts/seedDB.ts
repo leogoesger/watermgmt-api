@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import * as mongoose from 'mongoose';
 import * as db from '../models';
 import { users, ccSites } from '../seeds';
