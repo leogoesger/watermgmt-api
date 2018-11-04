@@ -10,7 +10,7 @@ import * as cors from "cors";
 const app = express();
 
 (mongoose as any).Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || process.env.DB_HOST);
+mongoose.connect(process.env.MONGODB_URI);
 
 app.use(cors())
 app.use(logger("tiny"));
